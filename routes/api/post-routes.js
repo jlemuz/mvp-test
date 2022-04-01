@@ -50,22 +50,22 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.post('/', (req, res) => {
-    // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
-    Post.create({
-      title: req.body.title,
-      post_url: req.body.post_url,
-      user_id: req.body.user_id,
-      img_url: req.body.img_url
-    })
-      .then(dbPostData => res.json(dbPostData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+//   router.post('/', (req, res) => {
+//     // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+//     Post.create({
+//       title: req.body.title,
+//       post_url: req.body.post_url,
+//       user_id: req.body.user_id,
+//       img_url: req.body.img_url
+//     })
+//       .then(dbPostData => res.json(dbPostData))
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+//   });
 
-router.post("/img", async (req,res)=>{
+router.post('/', async (req,res)=>{
 
     try{
         const file = req.files.file;
@@ -86,7 +86,17 @@ router.post("/img", async (req,res)=>{
         res.json({
             message: "File uploaded successfully",
             url: URL,
-        });
+            name: fileName
+        })
+
+        Post.create({
+            title: fileName,
+            post_url: fileName,
+            user_id: '1',
+            img_url: URL
+          })
+    
+        
 
     }catch(err){
         console.log(err);
@@ -94,7 +104,8 @@ router.post("/img", async (req,res)=>{
             message: err,
         })
     }
-
+    
+    
 })
 
 router.put('/:id', (req, res) => {
