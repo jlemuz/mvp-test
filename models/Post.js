@@ -22,7 +22,6 @@ Post.init(
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isURL: true
         }
       },
       user_id: {
@@ -45,4 +44,5 @@ Post.init(
     }
   );
 
-  module.export = Post;
+  module.exports = Post;
+
