@@ -10,8 +10,10 @@ const apiRoutes = require('./api');
 //api/users/1
 router.use('/api', apiRoutes);
 
+
 router.use((req, res) => {
   res.status(404).end();
 });
+
 
 module.exports = router;
