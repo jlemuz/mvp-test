@@ -8,7 +8,6 @@ const util = require("util");
 router.get('/', (req, res) => {
     Post.findAll({
       attributes: ['id', 'post_url', 'title', 'img_url', 'created_at'],
-      order: [['created_at', 'DESC']], 
       include: [
         {
           model: User,
@@ -97,7 +96,6 @@ router.post('/', async (req,res)=>{
           })
     
         
-
     }catch(err){
         console.log(err);
         res.status(500).json({
