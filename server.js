@@ -36,6 +36,8 @@ app.use(
 //creates the directory for the static files, including the images
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.join(__dirname, 'public/javascript')));
+
 app.use(express.static(path.join(__dirname, 'public/uploads')));
 
 app.use(express.json());

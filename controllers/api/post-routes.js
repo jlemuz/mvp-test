@@ -91,7 +91,7 @@ router.post('/', async (req,res)=>{
         Post.create({
             title: fileName,
             post_url: fileName,
-            user_id: '1',
+            user_id: '1', //would need to be updated to req.session.user_id
             img_url: URL
           })
     
